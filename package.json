@@ -19,7 +19,11 @@
     "url": "https://github.com/haimingyue/mmall-fe/issues"
   },
   "homepage": "https://github.com/haimingyue/mmall-fe#readme",
-  "dependencies": {},
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "hogan": "^1.0.2",
+    "hogan.js": "^3.0.2"
+  },
   "devDependencies": {
     "css-loader": "^0.28.1",
     "extract-text-webpack-plugin": "^1.0.1",
