@@ -20,13 +20,13 @@ var nav = {
     // 注册点击事件
     $('.js-register').click(function() {
       console.log(2)
-      window.location.href = './register.html'
+      window.location.href = './user-register.html'
     })
     // 退出点击事件
     $('.js-logout').click(function() {
-      console.log(2)
       _user.logout(function(res) {
-        window.location.reload();
+        console.log('res', res)
+        window.location.href = "./user-login.html";
       }, function(errMsg) {
         _mm.errorTips(errMsg);
       })
@@ -35,9 +35,10 @@ var nav = {
   // 加载用户信息
   loadUserInfo: function () {
     _user.checkLogin(function(res) {
-      $('.user.not-login').hide().sibilings('.uer.login').show()
+      $('.user.not-login').hide().siblings('.user.login').show()
       .find('.username').text(res.username)
     }, function(errMsg) {
+      console.log('err', errMsg)
       // doSomthing
     })
   },

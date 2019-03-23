@@ -3,7 +3,7 @@
  * @Author: your name
  * @LastEditors: Please set LastEditors
  * @Date: 2019-03-17 06:34:59
- * @LastEditTime: 2019-03-18 05:20:06
+ * @LastEditTime: 2019-03-23 21:07:04
  */
 
  'strict'
@@ -13,6 +13,7 @@
  var Hogan = require('hogan.js');
  var _mm = {
    request : function(param) {
+     console.log('param', param)
      var _this = this;
     $.ajax({
       type: param.method || 'get',
@@ -23,12 +24,12 @@
         if(res.status === 0) {
           // 请求成功
           typeof param.success === 'function' && param.success(res.data, res.msg)
-        } else if(10 === status) {
+        } else if(10 === res.status) {
           //没有登录
           _this.doLogin();
-        } else if(1 === status) {
+        } else if(1 === res.status) {
           //请求数据错误
-          typeof param.error === 'function' && param.error(res.data, res.msg)
+          typeof param.error === 'function' && param.error(res.msg)
         }
       },
       error: function(err) {
@@ -75,6 +76,7 @@
     }
     // 手机号验证
     if(type==='phone') {
+      console.log('value', value)
       return /^1\d{10}$/.test(value)
     }
     // 邮箱格式验证
@@ -84,7 +86,7 @@
    },
    // 统一登录处理
    doLogin: function() {
-    window.location.href = './login.html?redirect=' + encodeURI(window.location.href)
+    window.location.href = './user-login.html?redirect=' + encodeURI(window.location.href)
    },
    // goHome
    goHome: function() {
