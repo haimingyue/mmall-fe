@@ -3,7 +3,7 @@
  * @Author: your name
  * @LastEditors: Please set LastEditors
  * @Date: 2019-03-19 17:49:56
- * @LastEditTime: 2019-03-21 05:31:15
+ * @LastEditTime: 2019-03-28 15:13:20
  */
 
 require('./index.css')
@@ -53,6 +53,7 @@ var page = {
         validateResult = this.formValidate(formData);
         if(validateResult.status) {
             _user.login(formData, function(res) {
+                console.log(1)
                 window.location.href = _mm.getUrlParam('redirect') || './index.html'
             }, function(errMsg) {
                 console.log(errMsg)
